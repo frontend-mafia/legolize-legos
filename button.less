@@ -1,0 +1,210 @@
+/********************************************
+	Button
+********************************************/
+
+/// Naming conventions:
+// LegoName
+// LegoName--modifierName
+// LegoName-descendantName
+// LegoName.is-stateOfLego
+// Variable names:
+// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
+
+//<button class="Button Button--myButton"></button>
+
+// -------------------- Variables --------------------
+
+//Type modifiers variables
+
+// .Button--default
+@buttonDefault-fontColor: #333;
+@buttonDefault-bgColor: #fff;
+@buttonDefault-borderColor: #adadad;
+
+@buttonPrimary-fontColor: #fff;
+@buttonPrimary-bgColor: #06a3d5;
+@buttonSecondary-fontColor: #fff;
+@buttonSecondary-bgColor: #787878;
+@buttonSuccess-fontColor: #fff;
+@buttonSuccess-bgColor: #57A62F;
+@buttonWarning-fontColor: #fff;
+@buttonWarning-bgColor: #ffae00;
+@buttonDanger-fontColor: #fff;
+@buttonDanger-bgColor: #D42020;
+
+@button--link-color: @brandPrimary;
+@button--link-hover-color: #0079a0;
+
+@button--xs-fontSize: @base-fontSize--xs;
+@button--xs-borderRadius: 2px;
+
+@button--sm-fontSize: @base-fontSize--sm;
+@button--sm-borderRadius: 3px;
+
+@button--lg-fontSize: @base-fontSize--lg;
+@button--lg-borderRadius: 5px;
+
+@button--xl-fontSize: @base-fontSize--xl;
+@button--xl-borderRadius: 4px;
+
+// -------------------- Core LEGO --------------------
+.Button {
+	.Button();
+
+	//apply default style
+	.buttonVariant(@buttonDefault-fontColor, @buttonDefault-bgColor, @buttonDefault-borderColor);
+	&:hover {
+		background-color: @brandPrimary;
+	}
+
+	.margin-top(2);
+	.margin-bottom(2);
+
+	.Form-item & {
+		.margin-top(1);
+		.margin-bottom(1);
+	}
+	
+	&.is-block {
+		display:block;
+	}
+}
+
+// -------------------- Descendants --------------------
+.Button-icon {
+	.Button-icon();
+}
+
+// -------------------- Modifiers --------------------
+.Button-icon--left {
+	.Button-icon--left();
+}
+
+.Button-icon--right {
+	.Button-icon--right();
+}
+
+.Button--link {
+	.Button--link();
+	text-decoration: none;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+// -------------------- States --------------------
+.Button.is-disabled {
+	.Button-is-disabled();
+}
+
+.Button.is-active {
+	.Button-is-active(@buttonDefault-bgColor);
+}
+
+.Button.is-focus {
+	.Button-is-focus();
+}
+
+// -------------------- Type modifiers --------------------
+.Button--primary   { .buttonVariant(@buttonPrimary-fontColor, @buttonPrimary-bgColor); }
+.Button--secondary { .buttonVariant(@buttonSecondary-fontColor, @buttonSecondary-bgColor); }
+.Button--success   { .buttonVariant(@buttonSuccess-fontColor, @buttonSuccess-bgColor); }
+.Button--warning   { .buttonVariant(@buttonWarning-fontColor, @buttonWarning-bgColor); }
+.Button--danger    { .buttonVariant(@buttonDanger-fontColor, @buttonDanger-bgColor); }
+
+.Button--primary-simple   { .buttonVariantWhite(@buttonPrimary-bgColor); }
+.Button--secondary-simple { .buttonVariantWhite(@buttonSecondary-bgColor); }
+.Button--success-simple   { .buttonVariantWhite(@buttonSuccess-bgColor); }
+.Button--warning-simple   { .buttonVariantWhite(@buttonWarning-bgColor); }
+.Button--danger-simple    { .buttonVariantWhite(@buttonDanger-bgColor); }
+
+.Button--primary-link   { .buttonLinkVariant(@brandPrimary); }
+.Button--secondary-link { .buttonLinkVariant(@brandSecondary); }
+.Button--success-link   { .buttonLinkVariant(@brandSuccess); }
+.Button--warning-link   { .buttonLinkVariant(@brandWarning); }
+.Button--danger-link    { .buttonLinkVariant(@brandDanger); }
+
+// Button with icon inside, the icon is the button, no other styles should be here
+.Button--icon {
+	.Button--icon();
+}
+
+// Button layout modifiers
+.Button--block {
+	.Button--block();
+}
+
+.Button--center {
+	display: block;
+	margin: 10px auto;
+}
+
+// Button size variants
+.Button--xs {
+	.buttonSize(@button--xs-fontSize, @button--xs-borderRadius);
+}
+
+.Button--sm {
+	.buttonSize(@button--sm-fontSize, @button--sm-borderRadius);
+}
+
+.Button--lg {
+	.buttonSize(@button--lg-fontSize, @button--lg-borderRadius);
+}
+
+.Button--xl {
+	.buttonSize(@button--xl-fontSize, @button--xl-borderRadius);
+}
+
+//Custom modifiers
+.Button--submit {
+	.Button--primary;
+}
+
+.Button--cancel {
+	.Button--link;
+	padding:0;
+}
+
+.Button--delete {
+	.Button--danger;
+}
+
+.Button--split {
+	.Button--primary;
+
+	.Icon {
+		.Icon--split;
+	}
+}
+
+.Button--refresh {
+	.Button--primary;
+
+	.Icon {
+		.Icon--refresh;
+	}
+}
+
+.Button--toggle {
+	.Button--link;
+	margin:0;
+	padding:0;
+
+	.Icon {
+		.Icon--border-square;
+		.Icon--primary;
+		.Icon--xs;
+		.Icon--caret-down;
+	}
+
+	&.is-active {
+		background: none;
+
+		.Icon {
+			.Icon--caret-up;
+		}
+	}
+}
