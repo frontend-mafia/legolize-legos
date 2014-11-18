@@ -8,33 +8,46 @@
 // LegoName-descendantName
 // LegoName.is-stateOfLego
 // Variable names:
-// @legoModifier-property ex: @buttonPrimary-borderColor
+// @legoModifier-property ex: @button--primary-borderColor
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 //<button class="Button Button--myButton"></button>
 
 // -------------------- Variables --------------------
 
-//Type modifiers variables
+// --- Default variables ---
+@button-fontSize: @base-fontSize;
+@button-lineHeight: @base-lineHeight;
+@button-paddingVertical: 0px;
+@button-borderRadius: 3px;
+@button-borderWidth: 1px;
+@button-borderStyle: solid;
+@button-borderColor: transparent;
+@button-background: #fff;
 
-// .Button--default
-@buttonDefault-fontColor: #333;
-@buttonDefault-bgColor: #fff;
-@buttonDefault-borderColor: #adadad;
+// Default variant
+@button-color: #333;
+@button-backgroundColor: #fff;
+@button-borderColor: #adadad;
 
-@buttonPrimary-fontColor: #fff;
-@buttonPrimary-bgColor: #06a3d5;
-@buttonSecondary-fontColor: #fff;
-@buttonSecondary-bgColor: #787878;
-@buttonSuccess-fontColor: #fff;
-@buttonSuccess-bgColor: #57A62F;
-@buttonWarning-fontColor: #fff;
-@buttonWarning-bgColor: #ffae00;
-@buttonDanger-fontColor: #fff;
-@buttonDanger-bgColor: #D42020;
+// --- Modifier variables ---
+@button--primary-color: #fff;
+@button--primary-backgroundColor: #06a3d5;
 
-@button--link-color: @brandPrimary;
-@button--link-hover-color: #0079a0;
+@button--secondary-color: #fff;
+@button--secondary-backgroundColor: #787878;
+
+@button--success-color: #fff;
+@button--success-backgroundColor: #57A62F;
+
+@button--warning-color: #fff;
+@button--warning-backgroundColor: #ffae00;
+
+@button--danger-color: #fff;
+@button--danger-backgroundColor: #D42020;
+
+@button--link-color: inherit;
+@button--link-hover-color: inherit;
 
 @button--xs-fontSize: @base-fontSize--xs;
 @button--xs-borderRadius: 2px;
@@ -51,24 +64,7 @@
 // -------------------- Core LEGO --------------------
 .Button {
 	.Button();
-
-	//apply default style
-	.buttonVariant(@buttonDefault-fontColor, @buttonDefault-bgColor, @buttonDefault-borderColor);
-	&:hover {
-		background-color: @brandPrimary;
-	}
-
-	.margin-top(2);
-	.margin-bottom(2);
-
-	.Form-item & {
-		.margin-top(1);
-		.margin-bottom(1);
-	}
-	
-	&.is-block {
-		display:block;
-	}
+	.buttonVariant(@button-color, @button-backgroundColor, @button-borderColor);
 }
 
 // -------------------- Descendants --------------------
@@ -77,71 +73,33 @@
 }
 
 // -------------------- Modifiers --------------------
-.Button-icon--left {
-	.Button-icon--left();
-}
-
-.Button-icon--right {
-	.Button-icon--right();
-}
-
 .Button--link {
 	.Button--link();
-	text-decoration: none;
-	
-	&:hover {
-		text-decoration: underline;
-	}
 }
 
 // -------------------- States --------------------
-.Button.is-disabled {
-	.Button-is-disabled();
-}
+.Button {
+	&.is-disabled {
+		.Button-is-disabled();
+	}
 
-.Button.is-active {
-	.Button-is-active(@buttonDefault-bgColor);
-}
+	&.is-active {
+		.Button-is-active(@button-backgroundColor);
+	}
 
-.Button.is-focus {
-	.Button-is-focus();
+	&.is-focus {
+		.Button-is-focus();
+	}
 }
 
 // -------------------- Type modifiers --------------------
-.Button--primary   { .buttonVariant(@buttonPrimary-fontColor, @buttonPrimary-bgColor); }
-.Button--secondary { .buttonVariant(@buttonSecondary-fontColor, @buttonSecondary-bgColor); }
-.Button--success   { .buttonVariant(@buttonSuccess-fontColor, @buttonSuccess-bgColor); }
-.Button--warning   { .buttonVariant(@buttonWarning-fontColor, @buttonWarning-bgColor); }
-.Button--danger    { .buttonVariant(@buttonDanger-fontColor, @buttonDanger-bgColor); }
+.Button--primary   { .buttonVariant(@button--primary-color, @button--primary-backgroundColor, @button--primary-borderColor); }
+.Button--secondary { .buttonVariant(@button--secondary-color, @button--secondary-backgroundColor, @button--secondary-borderColor); }
+.Button--success   { .buttonVariant(@button--success-color, @button--success-backgroundColor, @button--success-borderColor); }
+.Button--warning   { .buttonVariant(@button--warning-color, @button--warning-backgroundColor, @button--warning-borderColor); }
+.Button--danger    { .buttonVariant(@button--danger-color, @button--danger-backgroundColor, @button--danger-borderColor); }
 
-.Button--primary-simple   { .buttonVariantWhite(@buttonPrimary-bgColor); }
-.Button--secondary-simple { .buttonVariantWhite(@buttonSecondary-bgColor); }
-.Button--success-simple   { .buttonVariantWhite(@buttonSuccess-bgColor); }
-.Button--warning-simple   { .buttonVariantWhite(@buttonWarning-bgColor); }
-.Button--danger-simple    { .buttonVariantWhite(@buttonDanger-bgColor); }
-
-.Button--primary-link   { .buttonLinkVariant(@brandPrimary); }
-.Button--secondary-link { .buttonLinkVariant(@brandSecondary); }
-.Button--success-link   { .buttonLinkVariant(@brandSuccess); }
-.Button--warning-link   { .buttonLinkVariant(@brandWarning); }
-.Button--danger-link    { .buttonLinkVariant(@brandDanger); }
-
-// Button with icon inside, the icon is the button, no other styles should be here
-.Button--icon {
-	.Button--icon();
-}
-
-// Button layout modifiers
-.Button--block {
-	.Button--block();
-}
-
-.Button--center {
-	display: block;
-	margin: 10px auto;
-}
-
-// Button size variants
+// -------------------- Size modifiers --------------------
 .Button--xs {
 	.buttonSize(@button--xs-fontSize, @button--xs-borderRadius);
 }
@@ -150,10 +108,25 @@
 	.buttonSize(@button--sm-fontSize, @button--sm-borderRadius);
 }
 
+.Button--md {
+	.buttonSize(@button--md-fontSize, @button--md-borderRadius);
+}
+
 .Button--lg {
 	.buttonSize(@button--lg-fontSize, @button--lg-borderRadius);
 }
 
 .Button--xl {
 	.buttonSize(@button--xl-fontSize, @button--xl-borderRadius);
+}
+
+// -------------------- Other modifiers --------------------
+// Button with icon inside, the icon is the button, no other styles should be here
+.Button--icon {
+	.Button--icon();
+}
+
+// Button layout modifiers
+.Button--block {
+	.Button--block();
 }

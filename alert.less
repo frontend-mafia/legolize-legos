@@ -12,25 +12,21 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@alert--primary-borderColor: #06a3d5;
-@alert--primary-bgColor: #EDF7FC;
-@alert--success-borderColor: #6B904C;
-@alert--success-bgColor: #D5ECC2;
-@alert--warning-borderColor: #FFAE00;
+@alert--primary-borderColor: @brandPrimary;
+@alert--primary-bgColor: #edf7fc;
+@alert--success-borderColor: #6b904c;
+@alert--success-bgColor: #d5ecc2;
+@alert--warning-borderColor: @brandWarning;
 @alert--warning-bgColor: #fff5dc;
-@alert--danger-borderColor: #d42020;
-@alert--danger-bgColor: #FFE2E2;
+@alert--danger-borderColor: @brandDanger;
+@alert--danger-bgColor: #ffe2e2;
 
 @alert--simple-bgColor: #fff;
 @alert--simple-borderWidth: 2px;
 
-@alert-caretSize: 3px;
-
 // -------------------- Core LEGO ------------------------
 .Alert {
-	.Alert();	
-	.margin-top(1);
-	.margin-bottom(1);
+	.Alert();
 }
 
 // -------------------- Descendants ----------------------
