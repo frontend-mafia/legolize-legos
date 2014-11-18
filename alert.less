@@ -12,14 +12,27 @@
 // @legoModifier-descendand-property ex: @listGroup-itemHeading-fontSize
 
 // -------------------- Variables --------------------
-@alert--primary-borderColor: @brandPrimary;
-@alert--primary-bgColor: #edf7fc;
-@alert--success-borderColor: #6b904c;
-@alert--success-bgColor: #d5ecc2;
-@alert--warning-borderColor: @brandWarning;
-@alert--warning-bgColor: #fff5dc;
-@alert--danger-borderColor: @brandDanger;
-@alert--danger-bgColor: #ffe2e2;
+
+// --- Global variables ---
+@alert-padding: 2;
+@alert-borderRadius: 5px;
+@alert-borderWidth: 1px;
+@alert-borderStyle: solid;
+@alert-borderColor: #333;
+@alert-bgColor: #fff;
+
+// --- Modifier variables ---
+@alert--primary-borderColor: blue;
+@alert--primary-backgroundColor: blue;
+
+@alert--success-borderColor: green;
+@alert--success-bgColor: green;
+
+@alert--warning-borderColor: yellow;
+@alert--warning-bgColor: yellow;
+
+@alert--danger-borderColor: red;
+@alert--danger-bgColor: red;
 
 @alert--simple-bgColor: #fff;
 @alert--simple-borderWidth: 2px;
@@ -40,7 +53,7 @@
 }
 
 .Alert--primary {
-	.createAlertVariant(@alert--primary-borderColor, @alert--primary-bgColor);
+	.createAlertVariant(@alert--primary-borderColor, @alert--primary-backgroundColor);
 }
 
 .Alert--warning {
