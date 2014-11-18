@@ -20,6 +20,9 @@
 // Column gutter
 @grid-gutter: 16px;
 
+// Number of columns
+@grid-columns: 12;
+
 // -------------------- Core LEGO --------------------
 .Grid {
 	.Grid();
@@ -32,6 +35,30 @@
 
 .Grid-col {
 	.Grid-col();
+}
+
+// -------------------- Columns --------------------
+// Mobile first
+.makeGridColumns();
+
+// 480+
+@media @base-screen--phablet--above {
+	.makeGridColumns(phablet);
+}
+
+// 600 +
+@media @base-screen--tabletSmall--above {
+	.makeGridColumns(tabletSmall);
+}
+
+// 768 +
+@media @base-screen--tablet--above {
+	.makeGridColumns(tablet);
+}
+
+// 960 +
+@media @base-screen--desktop--above {
+	.makeGridColumns(desktop);
 }
 
 /*// Layout stuff for debug purposes
