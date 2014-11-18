@@ -22,7 +22,7 @@
 // Border
 //@panel-borderWidth: 1px;
 //@panel-borderStyle: solid;
-@panel-borderColor: @base-borderColor;
+@panel-borderColor: #333;
 @panel-borderRadius: 3px;
 
 // ----- Header
@@ -83,7 +83,6 @@
 
 .Panel-body {
 	.Panel-body();
-	//padding-bottom: 10px; // I don't think we want padding-bottom here, let's try and have the child elements have margin instead
 }
 
 .Panel-body--highlight {
@@ -91,32 +90,6 @@
 }
 
 // -------------------- Modifiers --------------------
-.Panel-header--center {
-	text-align: center;
-}
-
-.Panel--simple {
-	border-radius: @panel-borderRadius;
-}
-
-.Panel--full {
-	border-radius: @panel-borderRadius;
-
-	.Panel-header {
-		border-radius: @panel-borderRadius @panel-borderRadius 0 0;
-	}
-
-	.Panel-body {
-		padding: 0px;
-		border-radius: 0 0 @panel-borderRadius @panel-borderRadius;
-	}
-
-	.Panel.Panel--full {
-		margin: 0px;
-		border: 0px;
-	}
-}
-
 .Panel--transparent {
 	.Panel--transparent();
 }
